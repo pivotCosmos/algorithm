@@ -3,8 +3,7 @@
 #리턴값: a에 포함되어 있는 정수 n개의 합 (정수)
 
 def solve(a):
-    ans = sum(a)
-    return ans
+    return sum(a)
 
 # result = solve(list(map(int, input().split())))
 # print(result)
