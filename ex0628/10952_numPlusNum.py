@@ -1,7 +1,6 @@
 import sys
-while True :
-    n, m = map(int, sys.stdin.readline().split())
+for line in sys.stdin :
+    n, m = map(int, line.split())
     if n == 0 and m == 0 :
         break
-    else :
-        print(n + m)
+    print(n + m)
