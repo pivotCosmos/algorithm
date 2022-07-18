@@ -2,7 +2,8 @@ n = int(input())
 re = []
 for i in range(1, n) :
     temp = i
-    templi = [int(x) for x in str(temp)]
+    # templi = [int(x) for x in str(temp)]
+    templi = list(map(int, str(temp)))
     if temp + sum(templi) == n :
         re.append(temp)
 
