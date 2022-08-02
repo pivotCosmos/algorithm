@@ -1,0 +1,6 @@
+N = int(input())
+li = list(str(N))
+li.sort(reverse=True)
+re = ''.join(li)
+# print(*li,sep='')
+print(re)
