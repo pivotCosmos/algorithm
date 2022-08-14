@@ -1,6 +1,3 @@
-from re import X
-
-
 xlist = []
 ylist = []
 for i in range(3) :
