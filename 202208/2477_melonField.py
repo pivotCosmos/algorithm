@@ -19,13 +19,13 @@ for i in range(6) :
     else  :
         directions.append(d)
         widths.append(w)
-print(f"directions = {directions}")
-print(f"widths = {widths}")
-print(f"dtemp = {dtemp}")
-print(f"wtemp = {wtemp}")
+# print(f"directions = {directions}")
+# print(f"widths = {widths}")
+# print(f"dtemp = {dtemp}")
+# print(f"wtemp = {wtemp}")
 templi = [x for x in directions if x not in dtemp]
 bigSquare = widths[directions.index(templi[0])] * widths[directions.index(templi[1])]
 smallSquare = wtemp[0] * wtemp[1]
-# result = (bigSquare - smallSquare) * K
-# print(result)
-print(f"({bigSquare} - {smallSquare}) * {K} = {(bigSquare - smallSquare) * K}")
+result = (bigSquare - smallSquare) * K
+print(result)
+# print(f"({bigSquare} - {smallSquare}) * {K} = {(bigSquare - smallSquare) * K}")
