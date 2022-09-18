@@ -2,27 +2,23 @@
 N, M = map(int, input().split())
 
 def get_submultiples(number) :
-    submultiples_of_number = []
+    submultiples = []
     for i in range(2, int(number/2)) :
         if number%i == 0 :
-            submultiples_of_number.append(i)
-    submultiples_of_number.sort(reverse=True)
-    return submultiples_of_number
+            submultiples.append(i)
+    submultiples.sort(reverse=True)
+    return submultiples
 
 def get_GCD(num1, num2) :
     GCD = 0
-    submultiples_num1 = get_submultiples(num1)
-    submultiples_num2 = get_submultiples(num2)
-    smaller_list = []
+    input_numbers = [num1, num2]
+    input_numbers.sort()
+    small_submultiples = get_submultiples(input_numbers[0])
+    big_submultiples = get_submultiples(input_numbers[1])
 
-    if N < M :
-        smaller_list = submultiples_num1
-    else :
-        smaller_list = submultiples_num2
-
-    for s in smaller_list :
-        if s in smaller_list :
-            GCD = s
+    for big_submultiple in big_submultiples :
+        if big_submultiple in small_submultiples :
+            GCD = big_submultiple
             break
     return GCD
 
