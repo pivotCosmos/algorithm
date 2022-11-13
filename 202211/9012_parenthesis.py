@@ -3,7 +3,7 @@ import sys
 class stack :
     def __init__(self) :
         self.items = []
-    def put(self,item) :
+    def push(self,item) :
         self.items.append(item)
     def pop(self) :
         return self.items.pop()
@@ -12,27 +12,22 @@ class stack :
 
 N = int(input()) # 테스트 개수 입력
 for _ in range(N) :
-    half = stack()
-    the_other_half = stack()
-    input_values = list(sys.stdin.readline().rstrip())
-    if len(input_values)%2 > 0 :
-        print('NO')
-    else :
-        # 반만 그대로 꺼내서 스택에 쌓고, 다른 반은 반대 괄호를 다른 스택에 쌓는다.
-        half_len = N//2
-        for i in range(len(input_values)) :
-            value = input_values[i]
-            if i < half_len :
-                half.put(value)
+    line_list = list(sys.stdin.readline().rstrip())
+    my_stack = stack()
+    result = ''
+    for one in line_list :
+        if one == '(' :
+            my_stack.push(one)
+        else :
+            if my_stack.is_empty() : # '('이 부족
+                result = 'NO'
+                break
             else :
-                reverse_value = ''
-                if value == '(' :
-                    reverse_value = ')'
-                else :
-                    reverse_value = '('
-                the_other_half.put(reverse_value)
-        # 스택에 저장된 데이터가 같으면 YES 아니면 NO
-        for i in range(half_len) :
-            if half.pop() != the_other_half.pop() : # 'stack' object is not subscriptable
-                print('NO')
-        print('YES')
+                my_stack.pop()
+    if result == 'NO' :
+        print(result)
+    else :
+        if my_stack.is_empty() :
+            print('YES')
+        else :
+            print('NO') # '('이 남음
