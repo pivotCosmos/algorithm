@@ -13,25 +13,28 @@ class stack :
 while True :
     line = list(sys.stdin.readline().rstrip())
     if line == ['.'] :
-        break # while문 탈출
-    my_stack_round = stack()
-    my_stack_square = stack()
-    result = 'YES'
+        break
+    my_stack = stack()
+    result = 'yes'
     for letter in line :
-        if letter == '(':
-            my_stack_round.push(letter)
-        elif letter == ')':
-            if my_stack_round.is_empty() :
-                result = 'NO'
+        if letter == '.':
+            break
+        elif letter == '(' or letter == '[':
+            my_stack.push(letter)
+        elif letter == ')' or letter == ']':
+            if my_stack.is_empty() :
+                result = 'no'
                 break
-            my_stack_round.pop()
-        elif letter == '[':
-            my_stack_square.push(letter)
-        elif letter == ']':
-            if my_stack_square.is_empty() :
-                result = 'NO'
-                break
-            my_stack_square.pop()
-    if not my_stack_round.is_empty() or not my_stack_square.is_empty():
-        result = 'NO'
+            else :
+                stack_value = my_stack.pop()
+                if stack_value == '(' :
+                    if letter == ']' :
+                        result = 'no'
+                        break
+                elif stack_value == '[' :
+                    if letter == ')' :
+                        result = 'no'
+                        break
+    if not my_stack.is_empty():
+        result = 'no'
     print(result)
