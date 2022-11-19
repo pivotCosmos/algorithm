@@ -17,9 +17,7 @@ while True :
     my_stack = stack()
     result = 'yes'
     for letter in line :
-        if letter == '.':
-            break
-        elif letter == '(' or letter == '[':
+        if letter == '(' or letter == '[':
             my_stack.push(letter)
         elif letter == ')' or letter == ']':
             if my_stack.is_empty() :
